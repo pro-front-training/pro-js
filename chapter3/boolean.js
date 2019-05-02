@@ -32,3 +32,17 @@ console.log(Boolean(message9)) // undefined 为 false
 if (message6) {
     console.log(message6.name)
 }
+
+// 逻辑值为true的值: 对象, 非空字符串, 非0数值(包括Infinity)
+// 逻辑值为false的值: 空字符串, 0, null, undefined, NaN
+
+/**
+ * 逻辑与 && 操作在两个操作数都是布尔值时, 返回布尔值. 如果有一个不是布尔值, 则遵循如下规则
+ * 下面定义第一个操作数为A，第二个操作数为B
+ * 如果A是对象，则返回B
+ * 如果B是对象，则只有在A的结果为 true 时，返回B
+ * 如果A，B都是对象, 则返回B
+ * 如果有一个操作数是 null, 则返回 null
+ * 如果有一个操作数是 NaN, 则返回NaN
+ * 如果有一个操作数是 undefined, 则返回 undefined
+ */
