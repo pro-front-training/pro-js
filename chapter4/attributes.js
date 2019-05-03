@@ -30,4 +30,5 @@ setName(person3)
 
 // 类型检测 instanceof
 var message1 = person instanceof Object // true
-console.log(message1)
+// console.log(message1)
+
