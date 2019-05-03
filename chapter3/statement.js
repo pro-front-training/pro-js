@@ -12,6 +12,7 @@ for (var property in window) {
 // switch case 会使用 === 比较数值
 
 // ECMAScript 的函数没有形参的概念. 即便定义函数时指定了2个参数，实际调用时也可以传0个或者多个参数
+// 没有传递值的参数会自动赋值为undefined
 function add() {
     return arguments[0] + arguments[1]
 }
