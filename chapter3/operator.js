@@ -67,4 +67,41 @@ message7 = message8 * 0 // NaN
 message7 = message8 * 1 // Infinity
 message7 = message8 * (-1) // -Infinity
 message7 = message8 * message8 // Infinity
-console.log(message7);
+// console.log(message7);
+
+/**
+ * 除法操作的特殊情况:
+ * 一正一负，结果为负
+ * 有一个操作数为 NaN, 结果为NaN
+ * Infinity / Infinity = NaN
+ * 0 / 0 = NaN
+ * 正数 / 0 = Infinity, 负数 / 0 = -Infinity
+ * Infinity / 正数 = Infinity, Infinity / 负数 = -Infinity
+ * 不是数值的操作数，会先调用Number(), 再参与计算
+ */
+
+var message9 = 0 / 0 // NaN
+var message10 = 1 / 0 // Infinity
+var message11 = -1 / 0 // -Infinity
+var message12 = message10 / message10 // NaN
+var message13 = message10 / 10 // Infinity
+var message14 = message10 / (-10) // -Infinity
+// console.log(message14)
+
+/*
+ * 求模计算的特殊情况:
+ * 无穷大 % 有限大 = NaN
+ * 有限大 % 0 = NaN
+ * 有限大 % Infinity = 被除数
+ * Infinity % Infinity = NaN
+ * 0 % 任何数 = 0
+ * 不是数值的操作数，会先调用Number(), 再参与计算
+ */
+
+var message15 = 1 / 0 // Infinity
+var message16 = message15 % 10 // NaN
+var message17 = 1 % 0 // NaN
+var message18 = 1 % message15 // 1
+var message19 = message15 / message15 // NaN
+var message20 = 0 % 1 // 0
+console.log(message20)
