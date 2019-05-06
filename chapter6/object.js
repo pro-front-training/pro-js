@@ -58,11 +58,54 @@ person4.name = "James"
 delete person4.name
 // console.log(person4.info())
 
-// 可以通过hasOwnProperty() 判断属性属于实例的，还是对原型对象的
+// 可以通过hasOwnProperty() 判断属性属于实例的，还是原型对象的
 var message1 = person4.hasOwnProperty("name") // false, 因为person4 实例没有该属性
 // console.log(message1)
 
 // 如果实例可以访问某个属性，in 就会返回true
 var message2 = "name" in person4 // true， person4 可以通过原型对象访问
 var message3 = "salary" in person4 // false, 实例和原型都没有salary 属性
-console.log(message3)
+
+// 获取原型对象的所有属性和方法
+var message4 = Object.keys(Person2.prototype) // ["name", "age", "info"]
+
+// 获取实例的所有属性和方法
+var person5 = new Person2()
+person5.name = "Jami"
+var message5 = Object.keys(person5) // ["name"]
+
+// 也可以通过getOwnPropertyNames() 获取对象的属性
+var message6 = Object.getOwnPropertyNames(Person2.prototype) // ["constructor", "name", "age", "info"]
+
+// 更简单的原型语法, 减少prototype的数量
+function Person3() {
+
+}
+Person3.prototype = {
+    name: "Jiangyu",
+    age: 28,
+    info: function () {
+        return "name: " + this.name + ", age: " + this.age
+    }
+}
+
+var person6 = new Person3()
+// 虽然作用是一样的, 但这样的 Person3.prototype.constructor 会指向 Object
+var message7 = person6.constructor == Object // true
+
+//解决的办法就是手动指定 constructor 的值为构造函数
+function Person4() {
+
+}
+Person4.prototype = {
+    constructor: Person4,
+    name: "Jiangyu",
+    age: 28,
+    info: function () {
+        return "name: " + this.name + ", age: " + this.age
+    }
+}
+var person7 = new Person4()
+var message8 = person7.constructor == Person4 // true
+
+
