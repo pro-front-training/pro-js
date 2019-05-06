@@ -109,3 +109,39 @@ var person7 = new Person4()
 var message8 = person7.constructor == Person4 // true
 
 
+// 原型的动态性. 每次调用实例的方法, 都会去原型中查找一遍. 也就是说, 改变原型对象, 也会影响已存在的实例
+function Person5() {
+
+}
+Person5.prototype = {
+    constructor: Person5,
+    name: "Jiangyu",
+    age: 20,
+    info: function () {
+        return "name: " + this.name + ", age: " + this.age
+    }
+}
+var person8 = new Person5()
+// console.log(person8.info())
+
+Person5.prototype.info = function () { // 重写原型对象的方法
+    return "name = " + this.name + ", age = " + this.age
+}
+console.log(person8.info()) // 实例的方法已经改变了
+
+// 原型模式的问题: 所有实例共享相同的属性, 对于引用类型的属性来说, 问题就很严重
+function Person6() {
+
+}
+Person6.prototype = {
+    constructor: Person6,
+    name: "Jiangyu",
+    age: 20,
+    friends: ["Jimmy", "Solos"]
+}
+var person9 = new Person6()
+var person10 = new Person6()
+
+person9.friends.push("Van")
+console.log(person10.friends) // ["Jimmy", "Solos", "Van"], 改变 person9 的引用类型属性, 导致 person10 也跟着变化
+
