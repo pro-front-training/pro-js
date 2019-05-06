@@ -127,7 +127,7 @@ var person8 = new Person5()
 Person5.prototype.info = function () { // 重写原型对象的方法
     return "name = " + this.name + ", age = " + this.age
 }
-console.log(person8.info()) // 实例的方法已经改变了
+// console.log(person8.info()) // 实例的方法已经改变了
 
 // 原型模式的问题: 所有实例共享相同的属性, 对于引用类型的属性来说, 问题就很严重
 function Person6() {
@@ -143,5 +143,23 @@ var person9 = new Person6()
 var person10 = new Person6()
 
 person9.friends.push("Van")
-console.log(person10.friends) // ["Jimmy", "Solos", "Van"], 改变 person9 的引用类型属性, 导致 person10 也跟着变化
+// console.log(person10.friends) // ["Jimmy", "Solos", "Van"], 改变 person9 的引用类型属性, 导致 person10 也跟着变化
 
+
+// 组合使用构造函数模式和原型模式, 构造函数用于定义实例属性, 原型模式用于定义方法和共享属性, 是使用最广泛的方式
+function Person7(name, age) {
+    this.name = name
+    this.age = age
+    this.friends = ["Jimmy", "Solos"]
+}
+Person7.prototype = {
+    constructor: Person7,
+    info: function () {
+        return "name: " + this.name + ", age: " + this.age
+    }
+}
+var person11 = new Person7()
+var person12 = new Person7()
+
+person11.friends.push("Van") // 只会改变实例 person11 的属性
+console.log(person12.friends)
