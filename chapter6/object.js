@@ -162,4 +162,3 @@ var person11 = new Person7()
 var person12 = new Person7()
 
 person11.friends.push("Van") // 只会改变实例 person11 的属性
-console.log(person12.friends)
