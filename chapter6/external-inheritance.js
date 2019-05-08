@@ -47,3 +47,29 @@ var employ5 = Object.create(Employ2, {
 // 第1次: Manager5.prototype = new Employ5()
 // 第2次: Employ5.call(this, salary)
 
+// 寄生组合式继承, 使用构造函数来继承属性, 通过原型链来继承方法
+// sup 是父类构造函数, sub是子类构造函数
+function inherit(sup, sub) {
+    var prototype = Object.create(sup) // 创建对象
+    prototype.constructor = sub // 增强对象
+    sub.prototype = prototype // 指定对象
+}
+
+function Employ3(salary) {
+    this.salary = salary
+}
+
+Employ3.prototype.info = function () {
+    return this.name
+}
+
+function Manager3(salary, bonus) {
+    Employ3.call(this, salary)
+    this.bonus = bonus
+}
+
+inherit(Employ3, Manager3)
+
+Manager3.prototype.getBonus = function () {
+    return this.bonus
+}
