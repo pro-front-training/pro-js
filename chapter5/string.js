@@ -45,3 +45,7 @@ var message14 = text1.replace(/at/g, "ar") // 将所有 at 替换为 ar
 var text2 = "Bunny,Cate,David,Edward,Frank"
 var message15 = text2.split(',')
 
+// join(), 拼按指定的分隔符, 接数组拼接成字符串
+var message16 = ["C", "C++", "Java"]
+var message17 = message16.join(", ") // C, C++, Java
+console.log(message17)
