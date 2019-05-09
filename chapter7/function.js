@@ -78,3 +78,38 @@ var object2 = {
 var message5 = object2.getName()() // object2
 
 // JavaScript没有块级作用域, 在语句中定义的变量, 实际上会一直存在于函数的在for循环中定义的计数器,
+function func3(count) {
+    for (var i = 0; i < count; i++) {
+        console.log(i)
+    }
+    console.log(i) // 此处可以访问for循环语句中定义的变量
+}
+// func3(5)
+
+// 定义一个匿名函数并立即执行
+function func4(count) {
+    (function (count) {
+        for (var i = 0; i < count; i++) {
+            console.log(i)
+        }
+    })(count) // 立即调用函数, 并传入参数
+    // console.log(i) // i 是匿名函数的作用域, 因此此处无法访问
+}
+// func4(5)
+
+// 私有变量
+function Person1(name) {
+    this.getName = function () {
+        return name
+    }
+
+    this.setName = function (value) {
+        name = value
+    }
+}
+
+var person1 = new Person1("Jiangyu")
+// console.log(person1.getName())
+person1.setName("Jimmy")
+// 上面的name并不是Person1的属性, 只是 getName 和 setName 可以通过作用域链访问到
+
