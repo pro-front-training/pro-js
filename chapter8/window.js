@@ -36,3 +36,5 @@ function func3() {
 // window.location = url1
 // location.href = url1
 
+// 代理信息
+console.log(navigator.userAgent)
