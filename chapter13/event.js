@@ -49,3 +49,6 @@ var handler3 = function (event) {
 var textInput1 = document.getElementById("input1")
 textInput1.addEventListener("textInput", handler3, false)
 
+/**
+ * change 对于<input>, <textarea>元素, 失去焦点且 value 改变时触发, 对于<select>, 选项改变时触发
+ */
