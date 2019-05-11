@@ -59,3 +59,22 @@ ctx3.lineTo(25, 100)
 // 描边路径
 ctx3.stroke()
 
+// 绘制文本
+ctx3.font = "bold 14px Arial"
+ctx3.textAlign = "center"
+ctx3.textBaseline = "middle"
+ctx3.fillText("12", 100, 20) // 字符串, x, y, 最大像素宽度(可选)
+
+// 计算文本区域大小
+var canvas4 = document.getElementById("canvas4")
+var ctx4 = canvas4.getContext("2d")
+
+ctx4.font = "bold 28px Consolas"
+ctx4.textAlign = "left"
+ctx4.textBaseline = "middle"
+
+var message1 = "Hello, world!"
+var textWidth1 = ctx4.measureText(message1).width
+textWidth1 = parseInt(textWidth1)
+ctx4.fillText(message1, 50, 30)
+ctx4.fillText("text width: " + textWidth1 + "px", 20, 150)
